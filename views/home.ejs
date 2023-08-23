@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/ea54f10068.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="head">
+        <i class="fa-solid fa-address-book fa-2xl" style="color: #ffffff;"></i>
+        <h3>Contact List</h3>
+    </div>
+
+    <div class="form">
+        <form action="/add-contact" method="post">
+            <label for="name">Contact's Name</label>
+            <input type="text" name="name" id="name" required>
+            <label for="phone">Phone Number</label>
+            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}">
+            <button type="submit">Add Contact</button>
+        </form>
+    </div>
+    <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th> Contacts's Name</th>
+                    <th> Phone No </th>
+                    <th> Remove </th>
+                </tr>
+            </thead>
+            <% for ( let i of contact_list) { %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <%= i.name %>
+                        </td>
+                        <td>
+                            <%= i.phone %>
+                        </td>
+                        <td> <a href="/delete-contact?id=<%= i._id %>"><i class="fa-solid fa-trash fa-lg"
+                                    style="color: #ffffff;"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            <% } %>
+        </table>
+    </div>
+</body>
+
+</html>
